@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-manifest
+  namespace: manifest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: manifest-container
+          imagePullPolicy: Always
+          image: marcoliew/my-app:31
+          ports:
+            - containerPort: 80
